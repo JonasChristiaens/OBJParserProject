@@ -3,7 +3,7 @@
 //-----------------------------------------------------
 // Include Files
 //-----------------------------------------------------
-
+#include "GameEngine.h"
 
 //-----------------------------------------------------
 // MyClass Class									
@@ -25,8 +25,19 @@ public:
 	//-------------------------------------------------
 	// Member functions						
 	//-------------------------------------------------
+	void SetString(tstring filePath);
+	void OBJFileParser();
+	void CreateBinaryFile();
+	void ReadBinaryFile();
 
-
+	struct Vertex
+	{
+		float xCoord, yCoord, zCoord;
+	};
+	struct Face
+	{
+		int idx1, idx2, idx3;
+	};
 
 private: 
 	//-------------------------------------------------
@@ -37,8 +48,11 @@ private:
 	//-------------------------------------------------
 	// Datamembers								
 	//-------------------------------------------------
+	tstring m_filePath;
 
-	
+	std::vector<tstring> m_Comments{};
+	std::vector<Vertex> m_Vertices{};
+	std::vector<Face> m_Faces{};
 };
 
  

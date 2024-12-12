@@ -12,7 +12,8 @@
 // Game Member Functions																				
 //-----------------------------------------------------------------
 
-Game::Game() 																	
+Game::Game():
+	m_MyModelObject{}
 {
 	// nothing to create
 }
@@ -51,7 +52,7 @@ void Game::Start()
 	m_BtnLoadUPtr = std::make_unique<Button>(_T("Load"));
 	m_BtnLoadUPtr->SetBounds(50 + TB_WIDTH, 25, 75 + TB_WIDTH + BTN_WIDTH, 50);
 	m_BtnLoadUPtr->AddActionListener(this);
-	m_BtnLoadUPtr->Show();
+	m_BtnLoadUPtr->Show();	
 }
 
 void Game::End()
@@ -169,11 +170,9 @@ void Game::CallAction(Caller* callerPtr)
 		}
 		else
 		{
-			m_MyModelObject.Load(fullFileName.str());
+			m_MyModelObject.SetString(fullFileName.str());
+			m_MyModelObject.OBJFileParser();
+			m_MyModelObject.CreateBinaryFile();
 		}
 	}
 }
-
-
-
-
